@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PraiOfficial</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at center, #0a0a0a 0%, #000000 100%);
+      overflow: hidden;
+      animation: fadeIn 1.5s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(1.05); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .container {
+      position: relative;
+      background: rgba(15, 15, 15, 0.95);
+      border-radius: 20px;
+      padding: 30px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 25px #00f0ff40;
+      text-align: center;
+      margin: 80px auto;
+      animation: slideIn 1s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .profile img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid #00f0ff;
+    }
+    .profile-info {
+      text-align: left;
+    }
+    .profile-info h2 {
+      margin: 0;
+      font-size: 18px;
+    }
+    .profile-info span {
+      color: #7fffcc;
+      font-size: 12px;
+    }
+    .version {
+      margin: 15px 0;
+      color: #00f0ff;
+      font-size: 18px;
+      text-shadow: 0 0 12px #00f0ff, 0 0 20px #00f0ff88;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { text-shadow: 0 0 10px #00f0ff; }
+      50% { text-shadow: 0 0 20px #00f0ff, 0 0 30px #00f0ff; }
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 18px;
+      border-radius: 8px;
+      border: none;
+      background: #1a1a1a;
+      color: white;
+      font-size: 14px;
+      box-shadow: inset 0 0 5px #000;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 10px;
+      background: #121212;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn:hover {
+      background: #1e1e1e;
+      box-shadow: 0 0 12px #00f0ff50, 0 0 20px #00f0ff30;
+      transform: scale(1.02);
+    }
+
+    .btn.force {
+      border: 2px solid #fff;
+      box-shadow: 0 0 12px #ffffff90;
+    }
+
+    .btn.send {
+      background: linear-gradient(135deg, #ffffff, #ccc);
+      color: black;
+      box-shadow: 0 0 10px #fff;
+    }
+
+    .logout {
+      margin-top: 15px;
+      background: #222;
+      color: white;
+      border: 1px solid #666;
+      border-radius: 8px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .logout:hover {
+      background: #333;
+      box-shadow: 0 0 10px #888;
+    }
+
+    .developer {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .developer a {
+      color: #00f0ff;
+      text-decoration: none;
+    }
+
+    /* Floating dots background */
+    .dots {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+    }
+
+    .dot {
+      position: absolute;
+      background: #00f0ff20;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      animation: floatDot 8s infinite ease-in-out;
+    }
+
+    @keyframes floatDot {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(0.2);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background dots -->
+  <div class="dots">
+    <div class="dot" style="top:90%; left:5%; animation-delay: 0s;"></div>
+    <div class="dot" style="top:95%; left:25%; animation-delay: 2s;"></div>
+    <div class="dot" style="top:100%; left:50%; animation-delay: 4s;"></div>
+    <div class="dot" style="top:85%; left:70%; animation-delay: 1s;"></div>
+    <div class="dot" style="top:80%; left:90%; animation-delay: 3s;"></div>
+  </div>
+
+  <div class="container">
+    <div class="profile">
+      <img src="https://files.catbox.moe/xm1yx7.jpg" />
+      <div class="profile-info">
+        <h2>HanzyyXSlayer</h2>
+        <span>🟢 Connected</span>
+      </div>
+    </div>
+
+    <div class="version">💬 5Version</div>
+
+    <input type="text" placeholder="628xxxx" />
+
+    <button class="btn force">☠️ Force Close</button>
+    <button class="btn">💣 Force Invis</button>
+    <button class="btn">🕒 Delay Hard</button>
+    <button class="btn">🙈 Delay Perma</button>
+
+    <button class="btn send">🐞 SEND BUG</button>
+
+    <button class="logout">Logout</button>
+
+    <div class="developer">
+      Contact Developer:<br />
+      <a href="https://t.me/XyHanzyy">@HanzyyXy</a>
+    </div>
+  </div>
+</body>
+</html>
