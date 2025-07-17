@@ -1,20 +1,20 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Neon Bug Tools</title>
+  <title>SlayerNew Bug Tools</title>
   <style>
     body {
       background: #0e0e0e;
       color: #fff;
-      font-family: sans-serif;
+      font-family: 'Poppins', sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
+      overflow: hidden;
     }
     .box {
       background: rgba(255,255,255,0.05);
@@ -23,6 +23,8 @@
       padding: 20px;
       width: 300px;
       text-align: center;
+      box-shadow: 0 0 15px rgba(0,255,255,0.2);
+      animation: fadeIn 0.5s ease-in-out;
     }
     input, button {
       width: 100%;
@@ -31,6 +33,7 @@
       border: none;
       border-radius: 10px;
       font-size: 1rem;
+      transition: all 0.3s ease;
     }
     input {
       background: rgba(255,255,255,0.1);
@@ -40,9 +43,12 @@
       background: black;
       color: white;
       cursor: pointer;
+      border: 1px solid #0ff;
+      text-shadow: 0 0 3px #0ff;
     }
     button:hover {
-      background: #222;
+      background: #111;
+      box-shadow: 0 0 8px #0ff;
     }
     .hidden {
       display: none;
@@ -57,22 +63,32 @@
       text-decoration: none;
       color: white;
       font-size: 14px;
+      border: 1px solid #0ff;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    #loading {
+      margin-top: 15px;
+      font-size: 0.9em;
+      color: #0ff;
     }
   </style>
 </head>
 <body>
 
 <div class="box" id="login-box">
-  <h2>Masukan Nama</h2>
+  <h2>Masukkan Nama</h2>
   <input type="text" id="nama" placeholder="Nama">
-  <h2>Masukan Password</h2>
+  <h2>Masukkan Password</h2>
   <input type="password" id="password" placeholder="Password">
   <button onclick="login()">Login</button>
 </div>
 
 <div class="box hidden" id="menu-box">
   <h2>Menu Bug</h2>
-  <input type="text" id="nomor" placeholder="Masukan Nomor">
+  <input type="text" id="nomor" placeholder="Masukkan Nomor">
   <button onclick="showBugMenu()">Lanjut</button>
 </div>
 
@@ -87,46 +103,56 @@
 
 <div class="box hidden" id="proses-box">
   <h2 id="proses-status"></h2>
+  <div id="loading">⏳ Sedang Memproses...</div>
   <button onclick="cekBug()">Cek Bug</button>
 </div>
 
 <div class="box hidden" id="done-box">
-  <h2>Done Bug Silahkan Cek!!</h2>
+  <h2>✅ Done! Silakan Cek Target Kamu!</h2>
 </div>
 
-<a href="https://t.me/XxNann" target="_blank" id="developer">Developer</a>
+<a href="https://t.me/XyHanzyy" target="_blank" id="developer">Developer</a>
+
+<audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-29.mp3" preload="auto"></audio>
 
 <script>
-  function login() {
-    let nama = document.getElementById('nama').value;
-    let pass = document.getElementById('password').value;
+  function playSound() {
+    document.getElementById("clickSound").play();
+  }
 
-    // Validasi username & password yang diizinkan
-    if(nama === "ngetest" && pass === "999"){
+  function login() {
+    playSound();
+    let nama = document.getElementById('nama').value.trim();
+    let pass = document.getElementById('password').value.trim();
+
+    if(nama === "tes" && pass === "1"){
       document.getElementById('login-box').classList.add('hidden');
       document.getElementById('menu-box').classList.remove('hidden');
     } else {
-      alert('Username atau Password salah bro!');
+      alert('❌ Username atau Password salah!');
     }
   }
 
   function showBugMenu(){
-    let nomor = document.getElementById('nomor').value;
+    playSound();
+    let nomor = document.getElementById('nomor').value.trim();
     if(nomor){
       document.getElementById('menu-box').classList.add('hidden');
       document.getElementById('bug-box').classList.remove('hidden');
     } else {
-      alert('Masukin nomor dulu!');
+      alert('⚠️ Masukkan nomor terlebih dahulu!');
     }
   }
 
   function kirimBug(type){
+    playSound();
     document.getElementById('bug-box').classList.add('hidden');
     document.getElementById('proses-box').classList.remove('hidden');
-    document.getElementById('proses-status').innerText = `Proses Mengirim Bug: ${type}...`;
+    document.getElementById('proses-status').innerText = `📤 Proses Mengirim Bug: ${type}...`;
   }
 
   function cekBug(){
+    playSound();
     document.getElementById('proses-box').classList.add('hidden');
     document.getElementById('done-box').classList.remove('hidden');
   }
