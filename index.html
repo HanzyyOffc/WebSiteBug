@@ -1,174 +1,136 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Demo Website</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <style>
-        @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css");
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
-
-        * {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        header {
-            width: 100%;
-            position: fixed;
-            z-index: 1;
-        }
-
-        nav>div {
-            padding: .4rem 0;
-        }
-
-        .radius-50 {
-            border-radius: 1rem;
-        }
-
-        .collapse:not(.show) .nav-link {
-            font-size: 1.1rem;
-            color: #000 !important;
-            padding: 0 1.5rem !important;
-        }
-
-        .menu:focus {
-            box-shadow: none;
-        }
-
-        .menu i {
-            color: #000;
-            font-size: 1.8rem;
-        }
-
-        .logo h1 {
-            font-size: 1.8rem !important;
-            font-weight: bold;
-            color: #000;
-        }
-
-        .video {
-            height: 100vh;
-        }
-
-        .video video {
-            position: fixed;
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            /* filter: contrast(1.2); */
-        }
-
-        .detail {
-            position: fixed;
-            bottom: 4rem;
-            text-align: center;
-        }
-
-        .detail,
-        .detail a {
-            color: #000;
-        }
-
-        .detail h2 {
-            font-size: 55px;
-        }
-
-        .detail a {
-            font-size: 20px;
-        }
-
-        .detail .arrow {
-            font-size: 20px;
-            animation: arrow 1s infinite;
-            transition: all .3s ease;
-        }
-
-        .contact {
-            background-color: #ecf200;
-            padding: 0.5rem 1.5rem;
-            border: none;
-            font-weight: 500;
-        }
-
-        @keyframes arrow {
-            0% {
-                transform: translateY(-5px);
-            }
-
-            100% {
-                transform: translateY(10px);
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Neon Bug Tools</title>
+  <style>
+    body {
+      background: #0e0e0e;
+      color: #fff;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid #333;
+      border-radius: 15px;
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+    input {
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+    button {
+      background: black;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #222;
+    }
+    .hidden {
+      display: none;
+    }
+    #developer {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: black;
+      padding: 10px 15px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+    }
+  </style>
 </head>
-
 <body>
 
-    <header>
-        <nav class="navbar navbar-expand-lg bg-white">
-            <div class="container-fluid container-lg" id="round-onclick">
-                <a class="logo text-decoration-none" href="#">
-                    <h1>Logo</h1>
-                </a>
-                <button class="navbar-toggler menu border-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="bi bi-list" id="menu"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav m-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Service</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Portfolio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Review</a>
-                        </li>
-                    </ul>
-                    <button class="contact">Contact</button>
-                </div>
-            </div>
-        </nav>
-    </header>
+<div class="box" id="login-box">
+  <h2>Masukan Nama</h2>
+  <input type="text" id="nama" placeholder="Nama">
+  <h2>Masukan Password</h2>
+  <input type="password" id="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+</div>
 
-    <div class="video position-relative">
-        <video autoplay muted loop id="myVideo">
-            <source src="https://video.wixstatic.com/video/c0bbc5_ea3fdc8d953b4dbcab20a021d2ef1389/1080p/mp4/file.mp4"
-                type="video/mp4">
-        </video>
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-3">
-                    <div class="d-flex justify-content-center">
-                        <div class="detail">
-                            <h2 class="mb-3 fw-bold">Hi, It's HanzyyOffc</h2>
-                            <hr class="mb-3">
-                            <p>I'm a professional Web Developer. Our Main Goal to help & Satisficed the Local & Global
-                                Clients by web development solutions</p>
-                            <!-- <a href="" class="text-decoration-none fw-normal">DISCOVER MORE</a> -->
-                            <div class="arrow mt-4"><i class="bi bi-chevron-down"></i></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="box hidden" id="menu-box">
+  <h2>Menu Bug</h2>
+  <input type="text" id="nomor" placeholder="Masukan Nomor">
+  <button onclick="showBugMenu()">Lanjut</button>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+<div class="box hidden" id="bug-box">
+  <h2>Pilih Bug</h2>
+  <button onclick="kirimBug('Delay Hard')">Delay Hard</button>
+  <button onclick="kirimBug('Delay Invis')">Delay Invis</button>
+  <button onclick="kirimBug('Crash UI')">Crash UI</button>
+  <button onclick="kirimBug('Bug iOS')">Bug iOS</button>
+  <div id="status"></div>
+</div>
+
+<div class="box hidden" id="proses-box">
+  <h2 id="proses-status"></h2>
+  <button onclick="cekBug()">Cek Bug</button>
+</div>
+
+<div class="box hidden" id="done-box">
+  <h2>Done Bug Silahkan Cek!!</h2>
+</div>
+
+<a href="https://t.me/XxNann" target="_blank" id="developer">Developer</a>
+
+<script>
+  function login() {
+    let nama = document.getElementById('nama').value;
+    let pass = document.getElementById('password').value;
+
+    // Validasi username & password yang diizinkan
+    if(nama === "ngetest" && pass === "999"){
+      document.getElementById('login-box').classList.add('hidden');
+      document.getElementById('menu-box').classList.remove('hidden');
+    } else {
+      alert('Username atau Password salah bro!');
+    }
+  }
+
+  function showBugMenu(){
+    let nomor = document.getElementById('nomor').value;
+    if(nomor){
+      document.getElementById('menu-box').classList.add('hidden');
+      document.getElementById('bug-box').classList.remove('hidden');
+    } else {
+      alert('Masukin nomor dulu!');
+    }
+  }
+
+  function kirimBug(type){
+    document.getElementById('bug-box').classList.add('hidden');
+    document.getElementById('proses-box').classList.remove('hidden');
+    document.getElementById('proses-status').innerText = `Proses Mengirim Bug: ${type}...`;
+  }
+
+  function cekBug(){
+    document.getElementById('proses-box').classList.add('hidden');
+    document.getElementById('done-box').classList.remove('hidden');
+  }
+</script>
+
 </body>
-
 </html>
